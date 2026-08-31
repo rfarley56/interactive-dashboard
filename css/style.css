@@ -1,4 +1,5 @@
 body {
-    background-color: #f4f4f9;
+    background-color: darkblue; /* or a hex code like #00008b or #0f172a for a navy dark blue */
+    color: #ffffff; /* optional: makes text white so it remains readable */
     font-family: Arial, sans-serif;
 }
