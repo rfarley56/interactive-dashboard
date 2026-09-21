@@ -20,8 +20,8 @@ The Imperial/Metric Converter is an interactive tool on this dashboard that conv
 
 ### Logic and Pseudocode
 
-\`\`\`
-BEGIN
+
+    BEGIN
     DISPLAY "Metric Converter"
     DISPLAY "1. Inch to Centimeter"
     DISPLAY "2. Foot to Centimeter"
@@ -68,4 +68,4 @@ BEGIN
         OUTPUT inputValue, " converted is ", result, " ", unitLabel
     END IF
 END
-\`\`\`
+
