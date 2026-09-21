@@ -14,8 +14,13 @@ WEB - 115 Interactive dashboard repo
 
 This feature lets a user enter their name, a daily task goal, and any weekly bonus tasks. The dashboard multiplies the daily goal by five workdays to calculate a weekly goal, then adds the bonus tasks to produce a total weekly target. The result is displayed dynamically on the page without a reload, using JavaScript's `innerHTML`.
 
-## Module 5 Pseudocode
+## Imperial/Metric Converter
 
+The Imperial/Metric Converter is an interactive tool on this dashboard that converts values between US customary (Imperial) and metric units of length. It supports inches, feet, yards, and miles on the Imperial side, and centimeters, meters, and kilometers on the metric side. Users select a conversion type from a dropdown, enter a numeric value, and the tool calculates and displays the converted result.
+
+### Logic and Pseudocode
+
+\`\`\`
 BEGIN
     DISPLAY "Metric Converter"
     DISPLAY "1. Inch to Centimeter"
@@ -63,3 +68,4 @@ BEGIN
         OUTPUT inputValue, " converted is ", result, " ", unitLabel
     END IF
 END
+\`\`\`
