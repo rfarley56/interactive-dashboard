@@ -69,3 +69,14 @@ The Imperial/Metric Converter is an interactive tool on this dashboard that conv
     END IF
 END
 
+## Magic Eight Ball
+
+A digital take on the classic fortune-telling toy. Type a yes/no question, then click and hold the ball to shake it and get a random answer.
+
+**Technical features**
+- Answers are stored in a JavaScript array and chosen with `Math.random()`
+- A `mousedown` event listener checks that a question was entered and shows an alert if the field is empty
+- The answer displays by switching the circle's CSS `display` property and updating its `innerHTML`
+- A CSS `@keyframes` animation shakes the ball while it's pressed
+- A Reset button hides the answer so you can ask again
+
