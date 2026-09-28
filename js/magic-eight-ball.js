@@ -23,7 +23,7 @@ const resetButton = document.getElementById("reset");
 function displayAnswer() {
   let index = Math.floor(Math.random() * answers.length);
   circle.innerHTML = answers[index];
-  circle.style.display = "block";
+  circle.style.display = "flex";
 }
 
 // Step 3.3: When the ball is pressed, check for a question first
