@@ -40,3 +40,12 @@ resetButton.addEventListener("click", function () {
   circle.style.display = "none";
 });
 
+// Pressing Enter in the question box: check for a question instead of reloading the page
+question.form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  if (question.value.trim() === "") {
+    alert("Please type a question before asking the Magic Eight Ball.");
+  } else {
+    displayAnswer();
+  }
+});
