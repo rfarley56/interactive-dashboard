@@ -1,8 +1,20 @@
-
 #magic-eight-ball {
   max-width: 410px;
   text-align: center;
   margin: auto;
+}
+
+/* Wrapper sized to the ball image so the circle can sit on top of it */
+#magicEightBall {
+  position: relative;
+  width: 300px;
+  margin: 1rem auto;
+}
+
+#ball {
+  display: block;
+  width: 300px;
+  height: 300px;
 }
 
 #circle {
@@ -10,13 +22,20 @@
   background-color: white;
   color: black;
   position: absolute;
-  margin-left: 70px;
-  margin-top: 70px;
+  top: 75px;                 /* lines the circle up with the ball's white face */
+  left: 75px;
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  text-wrap: wrap;
-  display: none;
+  padding: 25px;             /* keeps text away from the curved edge */
+  box-sizing: border-box;
+  display: none;             /* JS switches this to flex to show the answer */
+  align-items: center;       /* vertical centering */
+  justify-content: center;   /* horizontal centering */
+  text-align: center;        /* centers each wrapped line */
+  overflow-wrap: break-word; /* breaks very long words instead of overflowing */
+  pointer-events: none;      /* clicks pass through to the ball underneath */
+  z-index: 1;
 }
 
 
