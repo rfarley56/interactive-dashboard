@@ -1,1 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amortization Calculator</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            color: #222;
+            background-color: #fafafa;
+        }
+        h1 {
+            color: #1f4e79;
+        }
+        #Button1 {
+            padding: 10px 18px;
+            font-size: 16px;
+            background-color: #1f4e79;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #Button1:hover {
+            background-color: #163a5a;
+        }
+        #output {
+            margin-top: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 4px 12px;
+            text-align: right;
+        }
+        th {
+            background-color: #1f4e79;
+            color: #fff;
+        }
+        .ending {
+            font-weight: bold;
+            color: #1f4e79;
+        }
+    </style>
+</head>
+<body>
 
+    <!-- Student information -->
+    <p>Name: Robyn Farley</p>
+    <p>Email: tnrdhd@outlook.com</p>
+    <p>Date: October 19, 2026</p>
+
+    <h1>Amortization Calculator</h1>
+
+    <button id="Button1">Calculate Amortization Schedule</button>
+
+    <!-- Results are displayed here, below the button -->
+    <div id="output"></div>
+
+    <script>
+        // Event listener activates the calculator when the button is clicked
+        document.getElementById("Button1").addEventListener("click", amortizationCalculator);
+
+        function amortizationCalculator() {
+            const output = document.getElementById("output");
+            output.innerHTML = "";
+
+            // Fixed interest rate of 5.75%
+            const interestRate = 0.0575;
+
+            // Prompt for the loan amount (without commas)
+            const loanAmount = parseFloat(prompt("Enter the loan amount (without commas):"));
+
+            if (isNaN(loanAmount) || loanAmount <= 0) {
+                alert("Please enter a valid loan amount without commas.");
+                return;
+            }
+
+            // Prompt for the loan term in years (15 or 30)
+            const termYears = parseInt(prompt("Enter the loan term in years (15 or 30):"));
+
+            // Alert the user if the loan term is not 15 or 30 years
+            if (termYears !== 15 && termYears !== 30) {
+                alert("Invalid loan term. The loan term must be either 15 or 30 years.");
+                return;
+            }
+
+            const termMonths = termYears * 12;
+
+            // Monthly payment formula
+            const monthlyPayment = (((interestRate / 12) * loanAmount) / (1 - Math.pow(1 + (interestRate / 12), (termYears * -12)))).toFixed(2);
+
+            // Total interest = (monthlyPayment * termMonths) - loanAmount
+            const totalInterest = ((Number(monthlyPayment) * termMonths) - loanAmount).toFixed(2);
+
+            // Total loan (mortgage) amount = loanAmount + totalInterest
+            const totalLoan = (loanAmount + Number(totalInterest)).toFixed(2);
+
+            // Print the summary information
+            let html = "";
+            html += "<p><strong>Mortgage term in years:</strong> " + termYears + "</p>";
+            html += "<p><strong>Mortgage interest rate:</strong> " + (interestRate * 100).toFixed(2) + "%</p>";
+            html += "<p><strong>Mortgage amount:</strong> $" + loanAmount.toFixed(2) + "</p>";
+            html += "<p><strong>Total interest amount:</strong> $" + totalInterest + "</p>";
+            html += "<p><strong>Total mortgage amount:</strong> $" + totalLoan + "</p>";
+            html += "<p><strong>Monthly payment:</strong> $" + monthlyPayment + "</p>";
+
+            // Build the monthly schedule
+            html += "<table>";
+            html += "<tr><th>Month</th><th>Monthly Payment</th><th>Loan Balance</th></tr>";
+
+            let balance = Number(totalLoan);
+            let endingMessage = "";
+
+            // Loop through every month of the loan
+            for (let month = 1; month <= termMonths; month++) {
+                // Monthly loan balance = total mortgage amount - monthly payment
+                balance = Number((balance - Number(monthlyPayment)).toFixed(2));
+
+                if (balance < 0) {
+                    balance = 0;
+                }
+
+                html += "<tr><td>" + month + "</td><td>$" + monthlyPayment + "</td><td>$" + balance.toFixed(2) + "</td></tr>";
+
+                // When the balance reaches 0, print the ending message
+                if (balance === 0) {
+                    endingMessage = "<p class='ending'>This is the Ending Amortization Calculator...</p>";
+                    break;
+                }
+            }
+
+            html += "</table>";
+            html += endingMessage;
+
+            output.innerHTML = html;
+        }
+    </script>
+
+</body>
+</html>
