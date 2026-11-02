@@ -117,10 +117,10 @@
         width: 100%;
       }
 
-      /* Digital clock and date styles */
-      #digital-clock {
-      background-color: #1e2a38;
     </style>
+
+  <script src="js/digital-clock.js" defer></script>
+    
   </head>
   <body>
     <h1>My Interactive Dashboard</h1>
@@ -168,6 +168,12 @@
             <button type="submit" id="convert-btn">Convert</button>
           </form>
           <div id="conversion-result"></div>
+        </div>
+        
+        <div id="digital-clock" class="col">
+          <h3>Current Time &amp; Date</h3>
+          <div id="clock-face"></div>
+          <p id="calendar-date"></p>
         </div>
 
         <div class="col" id="magic-eight-ball">
